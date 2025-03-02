@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile-backend # Arquivo Dockerfile para o back-end
+    ports:
+      - "8080:8080"
+    networks:
+      - loja-network
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile-frontend # Arquivo Dockerfile para o front-end
+    ports:
+      - "80:80"
+    networks:
+      - loja-network
+
+networks:
+  loja-network:
+    driver: bridge
